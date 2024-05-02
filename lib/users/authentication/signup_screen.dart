@@ -4,6 +4,8 @@ import 'package:clothes_app/users/authentication/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/signup_controller.dart';
+
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -16,6 +18,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var isObsecure = true.obs;
+  RegisterationController registerationController =
+  Get.put(RegisterationController());
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 children: [
 
                                   TextFormField(
-                                    controller: emailController,
+                                    controller: registerationController.emailController,
                                     validator: (val) => val == "" ? "Please write email ": null,
                                     decoration: InputDecoration(
                                       prefixIcon: Icon(
@@ -104,7 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   const SizedBox(height: 18,),
                                   Obx(
                                         () =>  TextFormField(
-                                      controller: passwordController,
+                                      controller: registerationController.passwordController,
                                       obscureText: isObsecure.value,
                                       validator: (val) => val == "" ? "Please write password ": null,
                                       decoration: InputDecoration(
@@ -160,10 +164,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     color: Colors.black,
                                     borderRadius: BorderRadius.circular(30),
                                     child: InkWell(
-                                      onTap: ()
-                                      {
-
-                                      },
+                                      onTap: () => registerationController.registerWithEmail(),
                                       borderRadius: BorderRadius.circular(30),
                                       child: const Padding(
                                         padding: EdgeInsets.symmetric(

@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:clothes_app/users/authentication/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'conf.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  HttpOverrides.global = MyHttpOverrides();
   runApp(const MyApp());
 }
 
