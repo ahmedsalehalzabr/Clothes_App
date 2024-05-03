@@ -165,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                        borderRadius: BorderRadius.circular(30),
                                        child: InkWell(
                                          onTap: () {  if (formKey.currentState!.validate()) {
-                                           // قم بإجراء الإجراءات اللازمة هنا
+
                                            loginController.loginWithEmail();
                                          }},
 

@@ -9,13 +9,12 @@ import '../hom_screen.dart';
 import '../utils/api_endpoints.dart';
 
 class LoginController extends GetxController {
-
-
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   Future<void> loginWithEmail() async {
+
     var headers = {'Content-Type': 'application/json'};
     try {
       var url = Uri.parse(
@@ -32,8 +31,10 @@ class LoginController extends GetxController {
         final json = jsonDecode(response.body);
         if (json['email'] != null) {
           var token = json['token'];
+          var email = json['email'];
           final SharedPreferences? prefs = await _prefs;
           await prefs?.setString('token', token);
+          await prefs?.setString('email', email);
           print(token);
           emailController.clear();
           passwordController.clear();

@@ -164,7 +164,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     color: Colors.black,
                                     borderRadius: BorderRadius.circular(30),
                                     child: InkWell(
-                                      onTap: () => registerationController.registerWithEmail(),
+
+                                      onTap: () {  if (formKey.currentState!.validate()) {
+
+                                        registerationController.registerWithEmail();
+                                      }},
+
                                       borderRadius: BorderRadius.circular(30),
                                       child: const Padding(
                                         padding: EdgeInsets.symmetric(
