@@ -69,6 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                      TextFormField(
                                        controller: loginController.emailController,
                                        validator: (val) => val == "" ? "Please write email ": null,
+
                                        decoration: InputDecoration(
                                          prefixIcon: Icon(
                                            Icons.email,
@@ -163,7 +164,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                        color: Colors.black,
                                        borderRadius: BorderRadius.circular(30),
                                        child: InkWell(
-                                         onTap: () => loginController.loginWithEmail(),
+                                         onTap: () {  if (formKey.currentState!.validate()) {
+                                           // قم بإجراء الإجراءات اللازمة هنا
+                                           loginController.loginWithEmail();
+                                         }},
+
                                          borderRadius: BorderRadius.circular(30),
                                          child: const Padding(
                                            padding: EdgeInsets.symmetric(
